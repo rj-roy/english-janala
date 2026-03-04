@@ -1,0 +1,12 @@
+c-article {
+  display: block;          /* Forces it to a new line (Div behavior) */
+  width: 100%;             
+  margin-bottom: 1.5rem;   
+  unicode-bidi: isolate;  /* Browser default for structural containers */
+}
+
+/* custom elements */
+e-example, left-sec, right-sec, top-sec, bottom-sec, text-group, extra-block, caro-indic, slide-content, caro-sec, lesson-desc{
+  display: block;
+  unicode-bidi: isolate; /* Standard browser behavior for divs */
+}
