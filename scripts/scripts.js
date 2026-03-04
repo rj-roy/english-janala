@@ -41,8 +41,8 @@ const displayData = (level) => {
                     lessonDesk.innerHTML = `
                         <div class="space-y-4 bg-[#f8f8f8] grid place-content-center place-items-center py-15 px-4 rounded-sm">
                             <img src="./assets/alert-error.png" alt="">
-                            <p class="text-[gray]">এই Lesson এ এখনো Vocabulary যুক্ত করা হয় নি</p>
-                            <h2 class="text-3xl font-bold">পরবর্তী Lesson এ যান</h2>
+                            <p class="text-[gray] text-center">এই Lesson এ এখনো Vocabulary যুক্ত করা হয় নি</p>
+                            <h2 class="text-3xl font-bold text-center">পরবর্তী Lesson এ যান</h2>
                         </div>
                     `
                 }
