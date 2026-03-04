@@ -34,26 +34,36 @@ const displayData = (level) => {
             const addDesc = (lessonByLevel) => {
                 const lessonDesk = document.querySelector("#lesson-desc");
                 lessonDesk.innerHTML = "";
+                lessonDesk.classList = "";
 
                 if(!lessonByLevel || lessonByLevel.length === 0){
-                    console.log("null")
+                    lessonDesk.classList.add('place-content-center')
+                    lessonDesk.innerHTML = `
+                        <div class="space-y-4 bg-[#f8f8f8] grid place-content-center place-items-center py-15 px-4 rounded-sm">
+                            <img src="./assets/alert-error.png" alt="">
+                            <p class="text-[gray]">এই Lesson এ এখনো Vocabulary যুক্ত করা হয় নি</p>
+                            <h2 class="text-3xl font-bold">পরবর্তী Lesson এ যান</h2>
+                        </div>
+                    `
                 }
 
                 lessonByLevel.forEach(dtDesc => {
-                    const card = document.createElement('div');
-                    card.classList.add('grid', 'w-full', 'bg-white', 'space-y-5', 'p-6', 'shadow-sm', 'rounded-sm')
-                    card.innerHTML = `
-                    <div class="grid space-y-2">
-                        <p class="font-bold">${dtDesc.word}</p>
-                        <p class="">Meaning/Pronunciation</p>
-                        <p class="font-bold font-bng">${dtDesc.meaning} / ${dtDesc.pronunciation}</p>
-                    </div>
-                
-                    <div id="buttons-temp" class="flex justify-between items-center">
-                        <button class="btn hover:bg-blue-500"><i class="fa-solid fa-circle-info "></i></button>
+                    lessonDesk.classList.add('text-center,', 'mt-3', 'bg-[#f8f8f8]', 'h-full',  'space-y-6', '!grid', 'gird-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-5', 'w-full', 'p-5')
 
-                        <button class="btn hover:bg-blue-500"><i class="fa-solid fa-volume-high "></i></button>
-                    </div>
+                    const card = document.createElement('div');
+                    card.classList.add('grid', 'text-center', 'w-full', 'bg-white', 'space-y-5', 'p-6', 'shadow-sm', 'rounded-sm')
+                    card.innerHTML = `
+                        <div class="grid space-y-2">
+                            <p class="font-bold">${dtDesc.word ? dtDesc.word : "শব্দ পাওয়া যায় নি"}</p>
+                            <p class="">Meaning/Pronunciation</p>
+                            <p class="font-bold font-bng">${dtDesc.meaning ? dtDesc.meaning : "অর্থ পাওয়া যায় নি"} / ${dtDesc.pronunciation}</p>
+                        </div>
+                    
+                        <div id="buttons-temp" class="flex justify-between items-center">
+                            <button class="btn hover:bg-blue-500"><i class="fa-solid fa-circle-info "></i></button>
+
+                            <button class="btn hover:bg-blue-500"><i class="fa-solid fa-volume-high "></i></button>
+                        </div>
                     `
 
                     lessonDesk.appendChild(card);

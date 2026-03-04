@@ -59,13 +59,13 @@
                     <ul tabindex="-1"
                         class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-2">
                         <li>
-                            <a class="btn btn-outline btn-primary">
+                            <a href="#faq" class="btn btn-outline btn-primary">
                                 <i class="fa-solid fa-circle-question"></i>
                                 FAQ
                             </a>
                         </li>
                         <li>
-                            <a class="btn btn-outline btn-primary">
+                            <a href="#lessons" class="btn btn-outline btn-primary">
                                 <i class="fa-solid fa-book-open"></i>
                                 Learn
                             </a>
@@ -78,7 +78,7 @@
                         </li>
                     </ul>
                 </div>
-                <a class="btn btn-ghost text-xl">
+                <a href="./index.html" class="btn btn-ghost text-xl">
                     <div class="flex items-center">
                         <span class="font-bold text-xl">English</span>
                         <img src="assets/logo.png" alt="">
@@ -89,13 +89,13 @@
             <div class="navbar-center hidden lg:flex">
                 <ul class="menu menu-horizontal px-1 gap-2">
                     <li>
-                        <a class="btn btn-outline btn-primary">
+                        <a href="#faq" class="btn btn-outline btn-primary">
                             <i class="fa-solid fa-circle-question"></i>
                             FAQ
                         </a>
                     </li>
                     <li>
-                        <a class="btn btn-outline btn-primary">
+                        <a href="#lessons" class="btn btn-outline btn-primary">
                             <i class="fa-solid fa-book-open"></i>
                             Learn
                         </a>
@@ -108,55 +108,10 @@
                     </li>
                 </ul>
             </div>
-            <!-- <div class="navbar-end">
-            <a class="btn">Button</a>
-        </div> -->
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- <div class="navbar bg-base-100 shadow-sm">
-        <div class="navbar-start">
-            <left-sec class="!flex items-center">
-                <span class="font-bold text-xl">English</span>
-                <img src="assets/logo.png" alt="">
-                <span class="font-bng">জানালা</span>
-            </left-sec>
-        </div>
-        <div class="navbar-end gap-2">
-            <a class="btn btn-outline btn-primary">
-                <i class="fa-solid fa-circle-question"></i>
-                FAQ
-            </a>
-
-            <a class="btn btn-outline btn-primary">
-                <i class="fa-solid fa-book-open"></i>
-                Learn
-            </a>
-
-            <a class="btn btn-outline btn-primary">
-                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                logout
-            </a>
-        </div>
-    </div> -->
     </header>
 
-
     <main class="space-y-4">
-
         <!-- hero section -->
         <section
             class="max-w-6xl min-h-[100dvh] px-3 mx-auto flex md:flex-row flex-col-reverse place-items-center  mt-10 md:mt-0">
@@ -180,7 +135,7 @@
         </section>
 
         <!-- lessons -->
-        <section class="max-w-6xl min-h-[100dvh] mt-3 mx-auto space-y-10 grid place-content-center px-4">
+        <section id="lessons" class="max-w-6xl min-h-[100dvh] mt-3 mx-auto space-y-10 grid place-content-center px-4">
             <h2 class="text-3xl font-bold text-center"><span class="text-[#00bcff]">Let's </span>Learn Vocabularies</h2>
 
             <div id="level-container" class="flex flex-wrap justify-center items-center gap-3">
@@ -221,20 +176,17 @@
                 </ul> -->
             </div>
 
-            <lesson-desc id="lesson-desc"
-                class="text-center mt-3 bg-[#f8f8f8] h-full  space-y-6 !grid gird-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-full p-5">
-
-                <!-- <div class="space-y-4 bg-[#f8f8f8] mt-30">
+            <lesson-desc id="lesson-desc" class="">
+                
+                <div class="space-y-4 bg-[#f8f8f8] grid place-content-center place-items-center py-15 px-4 rounded-sm">
                     <p class="text-[gray]">আপনি এখনো কোনো Lesson Select করেন নি</p>
                     <h2 class="text-3xl font-bold">একটি Lesson Select করুন</h2>
-                </div> -->
-                
-
+                </div>
             </lesson-desc>
         </section>
 
         <!-- faq -->
-        <section class="mt-30">
+        <section id="faq" class="mt-30">
             <h2 class="text-3xl font-bold text-center"><span class="text-[#00bcff]">Frequently </span>Asked Questions
             </h2>
 
