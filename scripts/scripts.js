@@ -6,7 +6,7 @@ const loadLevel = () => {
         .then((json) => displayData(json.data));
 };
 
-const removeActive = ()=>{
+const removeActive = () => {
     const lessonBtn = document.querySelectorAll('.lesson-btn-class');
 
     lessonBtn.forEach(btn => btn.classList.remove('active'));
@@ -32,23 +32,22 @@ const displayData = (level) => {
 
         btnDiv.addEventListener('click', () => {
             const descApiUrl = `https://openapi.programming-hero.com/api/level/${levelNo}`;
-            
+
             fetch(descApiUrl)
                 .then((descResponse) => descResponse.json())
                 .then((data) => addDesc(data.data))
 
+            // buttonRemoveActive
+            removeActive();
+            const lesBtn = document.getElementById(`les-btn-${levelNo}`)
+            lesBtn.classList.add('active');
 
-                removeActive();                                
-                const lesBtn = document.getElementById(`les-btn-${levelNo}`)
-                lesBtn.classList.add('active');
-                
-                
+
             const addDesc = (lessonByLevel) => {
                 const lessonDesk = document.querySelector("#lesson-desc");
                 lessonDesk.innerHTML = "";
-                lessonDesk.classList = "";              
-                
-
+                lessonDesk.classList = "";
+               
                 if (!lessonByLevel || lessonByLevel.length === 0) {
                     lessonDesk.classList.add('place-content-center')
                     lessonDesk.innerHTML = `
@@ -60,6 +59,7 @@ const displayData = (level) => {
                     `
                 }
 
+                // addingLessonsWord
                 lessonByLevel.forEach(dtDesc => {
                     lessonDesk.classList.add('text-center,', 'mt-3', 'bg-[#f8f8f8]', 'h-full', 'space-y-6', '!grid', 'gird-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-5', 'w-full', 'p-5')
 
@@ -72,8 +72,8 @@ const displayData = (level) => {
                             <p class="font-bold font-bng">${dtDesc.meaning ? dtDesc.meaning : "অর্থ পাওয়া যায় নি"} / ${dtDesc.pronunciation}</p>
                         </div>
                     
-                        <div id="buttons-temp" class="flex justify-between items-center">
-                            <button class="btn group hover:bg-blue-500">
+                        <div id="" class="flex justify-between items-center">
+                            <button onclick="loadWordDetails(${dtDesc.id})" class="btn group hover:bg-blue-500">
                                 <i class="fa-solid fa-circle-info group-hover:text-white"></i>
                             </button>
 
@@ -84,10 +84,12 @@ const displayData = (level) => {
                     `
 
                     lessonDesk.appendChild(card);
+                });             
+                
 
-                });
-            }
-        })
+            };
+        });
+        
     });
 };
 
@@ -105,4 +107,53 @@ function prnounce(text) {
     }
 
     window.speechSynthesis.speak(utterance);
+}
+
+// modal details
+const loadWordDetails = async (id) =>{
+    const url = `https://openapi.programming-hero.com/api/word/${id}`;
+    
+    const response = await fetch(url);
+    const details = await response.json();
+    displayWordD(details.data);
+}
+
+const displayWordD = (word) => {
+    const modal = document.querySelector("#my_modal_5")    
+    modal.showModal();
+
+    console.log(word)
+
+    modal.innerHTML = `
+            <div class="modal-box space-y-5 rounded-lg p-10">
+                <h3 class="text-xl font-bold">
+                    ${word.word}
+                    <span>(<i class="fa-solid fa-microphone-lines">:</i>${word.pronunciation})</span>
+                    <i onclick="prnounce('${word.word}')" class="fa-solid fa-volume-high hover:text-[#0000ff]"></i>
+                </h3>
+                <div>
+                    <p class="font-bold">Meaning</p>
+                    <p class="font-bold">${word.meaning}</p>
+                </div>
+
+                <div>
+                    <p class="font-bold">Example</p>
+                    <p>${word.sentence}</p>
+                </div>
+
+                <div>
+                    <p class="font-bng font-bold">সমার্থক শব্দ গূলো</p>
+                    <div>
+                        addSynonyms
+                    </div>
+                </div>
+                
+                <div class="modal-action flex justify-start">
+                    <form method="dialog">
+                        <button class="btn btn-primary">Complete Learning</button>
+                    </form>
+                </div>
+            </div>
+            `
+
 }
