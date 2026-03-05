@@ -30,7 +30,7 @@ const removeActive = () => {
 
 const displayData = (level) => {
     const levelContainer = document.querySelector("#level-container");
-    levelContainer.innerHTML = "";
+    levelContainer.innerHTML = " ";
 
     level.forEach(le => {
         const levelNo = le.level_no;
@@ -63,8 +63,8 @@ const displayData = (level) => {
 
             const addDesc = (lessonByLevel) => {
                 const lessonDesk = document.querySelector("#lesson-desc");
-                lessonDesk.innerHTML = "";
-                lessonDesk.classList = "";
+                lessonDesk.innerHTML = " ";
+                lessonDesk.classList = " ";
                
                 if (!lessonByLevel || lessonByLevel.length === 0) {
                     lessonDesk.classList.add('place-content-center')
