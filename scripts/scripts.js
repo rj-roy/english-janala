@@ -1,3 +1,13 @@
+const manageSpinner = (status) =>{
+    if(status === true){
+        document.getElementById('spinner-loader').classList.remove('hidden');
+        document.getElementById('lesson-desc').classList.add('!hidden');
+    }else{
+        document.getElementById('spinner-loader').classList.add('hidden');
+        document.getElementById('lesson-desc').classList.remove('!hidden');
+    }
+}
+
 const loadLevel = () => {
     const url = "https://openapi.programming-hero.com/api/levels/all#";
 
@@ -6,7 +16,7 @@ const loadLevel = () => {
         .then((json) => displayData(json.data));
 };
 
-// synonys func
+// synonyms func
 const createElements = (arr) =>{
     const htmlElements = arr.map((el => `<span class="btn">${el}</span>`))
     return (htmlElements.join(" "));
@@ -37,6 +47,8 @@ const displayData = (level) => {
 
 
         btnDiv.addEventListener('click', () => {
+            manageSpinner(true);
+
             const descApiUrl = `https://openapi.programming-hero.com/api/level/${levelNo}`;
 
             fetch(descApiUrl)
@@ -63,6 +75,7 @@ const displayData = (level) => {
                             <h2 class="text-3xl font-bold text-center">পরবর্তী Lesson এ যান</h2>
                         </div>
                     `
+                    manageSpinner(false);
                 }
 
                 // addingLessonsWord
@@ -89,7 +102,8 @@ const displayData = (level) => {
                         </div>
                     `
 
-                    lessonDesk.appendChild(card);
+                    lessonDesk.appendChild(card);                    
+                    manageSpinner(false);
                 });             
                 
 
@@ -163,5 +177,3 @@ const displayWordD = (word) => {
     const synArray = word.synonyms;
     console.log(synArray)
 }
-
-
