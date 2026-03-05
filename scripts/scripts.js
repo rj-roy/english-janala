@@ -6,6 +6,12 @@ const loadLevel = () => {
         .then((json) => displayData(json.data));
 };
 
+// synonys func
+const createElements = (arr) =>{
+    const htmlElements = arr.map((el => `<span class="btn">${el}</span>`))
+    return (htmlElements.join(" "));
+}
+
 const removeActive = () => {
     const lessonBtn = document.querySelectorAll('.lesson-btn-class');
 
@@ -122,8 +128,6 @@ const displayWordD = (word) => {
     const modal = document.querySelector("#my_modal_5")    
     modal.showModal();
 
-    console.log(word)
-
     modal.innerHTML = `
             <div class="modal-box space-y-5 rounded-lg p-10">
                 <h3 class="text-xl font-bold">
@@ -141,10 +145,10 @@ const displayWordD = (word) => {
                     <p>${word.sentence}</p>
                 </div>
 
-                <div>
+                <div class="space-y-2">
                     <p class="font-bng font-bold">সমার্থক শব্দ গূলো</p>
-                    <div>
-                        addSynonyms
+                    <div class="space-y-1">
+                        ${createElements(word.synonyms)}
                     </div>
                 </div>
                 
@@ -156,4 +160,8 @@ const displayWordD = (word) => {
             </div>
             `
 
+    const synArray = word.synonyms;
+    console.log(synArray)
 }
+
+
