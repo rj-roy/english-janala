@@ -44,8 +44,6 @@ const displayData = (level) => {
         `
         levelContainer.appendChild(btnDiv);
 
-
-
         btnDiv.addEventListener('click', () => {
             manageSpinner(true);
 
@@ -77,7 +75,7 @@ const displayData = (level) => {
                     `
                     manageSpinner(false);
                 }
-
+                // HLMK
                 // addingLessonsWord
                 lessonByLevel.forEach(dtDesc => {
                     lessonDesk.classList.add('text-center,', 'mt-3', 'bg-[#f8f8f8]', 'h-full', 'space-y-6', '!grid', 'gird-cols-1', 'md:grid-cols-2', 'lg:grid-cols-3', 'gap-5', 'w-full', 'p-5')
@@ -101,12 +99,9 @@ const displayData = (level) => {
                             </button>
                         </div>
                     `
-
                     lessonDesk.appendChild(card);                    
                     manageSpinner(false);
-                });             
-                
-
+                });  
             };
         });
         
@@ -114,8 +109,6 @@ const displayData = (level) => {
 };
 
 loadLevel();
-
-// prnounce
 function prnounce(text) {
     const utterance = new SpeechSynthesisUtterance(text);
 
@@ -128,7 +121,6 @@ function prnounce(text) {
 
     window.speechSynthesis.speak(utterance);
 }
-
 // modal details
 const loadWordDetails = async (id) =>{
     const url = `https://openapi.programming-hero.com/api/word/${id}`;
@@ -137,7 +129,6 @@ const loadWordDetails = async (id) =>{
     const details = await response.json();
     displayWordD(details.data);
 }
-
 const displayWordD = (word) => {
     const modal = document.querySelector("#my_modal_5")    
     modal.showModal();
